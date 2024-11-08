@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Common : 공통적으로 사용되는 Color   -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#93949A</color>
+    <color name="ivory">#FFFEF5</color>
+
+    <color name="main_blue">#2063E5</color>
+    <color name="baby_blue">#98B4EC</color>
+    <color name="sub_sky_blue">#46C0FE</color>
+    <color name="translucent_black">#B3000000</color>
+    <color name="translucent_white">#C8FFFFFF</color>
+    <color name="dark_gray">#343434</color>
+    <color name="light_gray">#CDCDCD</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#B63127</color>
+    <color name="undo">#4B9F4F</color>
 </resources>
