@@ -1,4 +1,4 @@
-package com.dhproject.registerproject.presentation.signup
+package com.dhproject.registerproject.presentation.register.signup
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

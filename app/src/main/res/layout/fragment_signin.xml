@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.signin.SigninFragment">
+    tools:context=".presentation.register.signin.SigninFragment">
 
     <ScrollView
         android:id="@+id/signin_main_layout"
