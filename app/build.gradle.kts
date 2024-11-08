@@ -49,4 +49,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.github.skydoves:elasticviews:2.1.0")
+    implementation(libs.androidx.lifecycle.viewmodel.android)
 }
