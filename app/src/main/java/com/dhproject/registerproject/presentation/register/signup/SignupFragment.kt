@@ -5,56 +5,53 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.dhproject.registerproject.R
+import com.dhproject.registerproject.data.RegisterViewModel
+import com.dhproject.registerproject.databinding.FragmentSignupBinding
+import com.dhproject.registerproject.presentation.register.signin.SigninFragment
+import io.github.muddz.styleabletoast.StyleableToast
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SignupFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SignupFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentSignupBinding
+    private val viewModel: RegisterViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_signup, container, false)
-    }
+    ): View {
+        binding = FragmentSignupBinding.inflate(inflater, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignupFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SignupFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        binding.btnSignupCheck.setOnClickListener {
+            val userId = binding.etSignupId.text.toString()
+            val userNickname = binding.etSignupNickname.text.toString()
+            val userPassword = binding.etSignupPassword.text.toString()
+            val userPasswordCheck = binding.etSignupPasswordCheck.text.toString()
+
+            viewModel.registerUser(
+                userId,
+                userNickname,
+                userPassword,
+                userPasswordCheck
+            ) { success ->
+                if (success) {
+                    requireActivity().supportFragmentManager.popBackStack()
+                } else {
+                    StyleableToast.makeText(requireContext(), "회원가입 실패", R.style.toast_warning)
+                        .show()
                 }
             }
+        }
+
+        binding.btnSignupCancel.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.register_fragment_container, SigninFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+        return binding.root
     }
+
 }
