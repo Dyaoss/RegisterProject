@@ -53,10 +53,18 @@ dependencies {
     implementation("com.github.skydoves:elasticviews:2.1.0")
     implementation(libs.androidx.lifecycle.viewmodel.android)
 
+    //Toast
+    implementation("io.github.muddz:styleabletoast:2.4.0")
+
     //Room
     implementation("androidx.room:room-runtime:2.6.0")
     annotationProcessor("androidx.room:room-compiler:2.6.0")
     kapt("androidx.room:room-compiler:2.6.0")
     implementation("androidx.room:room-ktx:2.6.0")
+
+    implementation("com.google.android.material:material:1.7.0")
+    implementation("com.ssomai:android.scalablelayout:2.1.6")
+    implementation("androidx.fragment:fragment-ktx:1.8.1")
+    implementation("androidx.activity:activity-ktx:1.6.0")
 
 }

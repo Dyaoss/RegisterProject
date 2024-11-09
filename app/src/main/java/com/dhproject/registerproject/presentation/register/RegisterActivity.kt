@@ -7,13 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.dhproject.registerproject.R
+import com.dhproject.registerproject.data.RegisterViewModel
 import com.dhproject.registerproject.databinding.ActivityRegisterBinding
 import com.dhproject.registerproject.presentation.register.signin.SigninFragment
 
 class RegisterActivity : AppCompatActivity() {
     private val binding by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
 
-    private val registerViewModel: RegisterViewModel by viewModels()
+    private val viewModel: RegisterViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
