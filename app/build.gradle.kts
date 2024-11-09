@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -51,4 +52,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.github.skydoves:elasticviews:2.1.0")
     implementation(libs.androidx.lifecycle.viewmodel.android)
+
+    //Room
+    implementation("androidx.room:room-runtime:2.6.0")
+    annotationProcessor("androidx.room:room-compiler:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
+
 }

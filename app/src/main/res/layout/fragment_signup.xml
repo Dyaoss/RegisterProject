@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.register.signup.SignupFragment">
 
     <ScrollView
@@ -24,28 +24,6 @@
                 android:layout_gravity="center"
                 android:text="SIGN IN" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/signup_nickname"
-                android:textColorHint="@color/dark_gray"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxStrokeColor="@color/main_blue"
-                app:boxStrokeErrorColor="@color/error"
-                app:boxStrokeWidth="1dp"
-                app:hintTextColor="@color/main_blue">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signup_nickname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -64,6 +42,29 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_signup_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/signup_nickname"
+                android:textColorHint="@color/dark_gray"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/main_blue"
+                app:boxStrokeErrorColor="@color/error"
+                app:boxStrokeWidth="1dp"
+                app:hintTextColor="@color/main_blue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_signup_nickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -116,30 +117,6 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:hint="@string/signup_email"
-                android:textColorHint="@color/dark_gray"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxStrokeColor="@color/main_blue"
-                app:boxStrokeErrorColor="@color/error"
-                app:boxStrokeWidth="1dp"
-                app:hintTextColor="@color/main_blue">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signup_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
-                    android:inputType="textEmailAddress"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -258,7 +235,6 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </FrameLayout>
