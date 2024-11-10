@@ -37,19 +37,38 @@ class SignupFragment : Fragment() {
             //유효성 검사
             if (validateInput(userId, userNickname, userPassword, userPasswordCheck)) {
 
-                viewModel.registerUser(
-                    userId,
-                    userNickname,
-                    userPassword,
-                    userPasswordCheck
-                ) { success ->
-                    if (success) {
-                        StyleableToast.makeText(requireContext(), "회원가입 성공", R.style.toast_warning)
+                viewModel.checkUserIdExists(userId) { isExist ->
+                    if (isExist) {
+                        StyleableToast.makeText(
+                            requireContext(),
+                            "이미 존재하는 아이디입니다.",
+                            R.style.toast_warning
+                        )
                             .show()
-                        goToSigninFragment()
                     } else {
-                        StyleableToast.makeText(requireContext(), "회원가입 실패", R.style.toast_warning)
-                            .show()
+                        viewModel.registerUser(
+                            userId,
+                            userNickname,
+                            userPassword,
+                            userPasswordCheck
+                        ) { success ->
+                            if (success) {
+                                StyleableToast.makeText(
+                                    requireContext(),
+                                    "회원가입 성공",
+                                    R.style.toast_warning
+                                )
+                                    .show()
+                                goToSigninFragment()
+                            } else {
+                                StyleableToast.makeText(
+                                    requireContext(),
+                                    "회원가입 실패",
+                                    R.style.toast_warning
+                                )
+                                    .show()
+                            }
+                        }
                     }
                 }
             }
@@ -74,9 +93,27 @@ class SignupFragment : Fragment() {
                 false
             }
 
+            userId.length > 12 || !userId.matches("^[a-zA-Z0-9]*$".toRegex()) -> {
+                StyleableToast.makeText(
+                    requireContext(),
+                    "아이디는 영문 또는 숫자로 12자 이하로 입력하세요.",
+                    R.style.toast_warning
+                ).show()
+                false
+            }
+
             userNickname.isEmpty() -> {
                 StyleableToast.makeText(requireContext(), "닉네임을 입력하세요.", R.style.toast_warning)
                     .show()
+                false
+            }
+
+            userNickname.length > 6 -> {
+                StyleableToast.makeText(
+                    requireContext(),
+                    "닉네임은 6자 이하로 입력하세요.",
+                    R.style.toast_warning
+                ).show()
                 false
             }
 
@@ -92,10 +129,10 @@ class SignupFragment : Fragment() {
                 false
             }
 
-            userPassword.length < 6 -> {
+            userPassword.length < 8 -> {
                 StyleableToast.makeText(
                     requireContext(),
-                    "비밀번호는 최소 6자리 이상이어야 합니다.",
+                    "비밀번호는 최소 8자리 이상이어야 합니다.",
                     R.style.toast_warning
                 ).show()
                 false

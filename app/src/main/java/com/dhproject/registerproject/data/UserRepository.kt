@@ -11,7 +11,10 @@ class UserRepository(private val userDao: UserDao) {
 
     suspend fun getUserById(userId: String): User? {
         return userDao.getUserById(userId)
+    }
 
+    suspend fun isUserIdExist(userId: String): Boolean {
+        return userDao.isUserIdExist(userId) > 0
     }
 
 }

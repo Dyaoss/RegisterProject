@@ -16,4 +16,7 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE userId = :userId")
     suspend fun getUserById(userId: String): User?
 
+    @Query("SELECT COUNT(*) FROM users WHERE userId = :userId")
+    suspend fun isUserIdExist(userId: String): Int
+
 }

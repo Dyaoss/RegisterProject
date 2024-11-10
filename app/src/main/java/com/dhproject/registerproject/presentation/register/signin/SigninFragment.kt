@@ -1,5 +1,6 @@
 package com.dhproject.registerproject.presentation.register.signin
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import com.dhproject.registerproject.R
 import com.dhproject.registerproject.data.RegisterViewModel
 import com.dhproject.registerproject.data.RegisterViewModelFactory
 import com.dhproject.registerproject.databinding.FragmentSigninBinding
+import com.dhproject.registerproject.presentation.MainActivity
 import com.dhproject.registerproject.presentation.register.signup.SignupFragment
 import io.github.muddz.styleabletoast.StyleableToast
 
@@ -34,11 +36,11 @@ class SigninFragment : Fragment() {
             viewModel.loginUser(userId, password) { isSuccess, user ->
                 requireActivity().runOnUiThread {
                     if (isSuccess && user != null) {
-                        StyleableToast.makeText(
-                            requireActivity(),
-                            "로그인 성공",
-                            R.style.toast_warning
-                        ).show()
+                        val intent = Intent(requireActivity(), MainActivity::class.java).apply {
+                            putExtra("user",userId)
+                        }
+                        startActivity(intent)
+                        requireActivity().finish()
                     } else {
                         StyleableToast.makeText(
                             requireActivity(),
