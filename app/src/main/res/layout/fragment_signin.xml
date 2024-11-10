@@ -111,56 +111,6 @@
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/signin_search_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:id="@+id/cb_auto_signin"
-                        style="@style/common_text_14_gray"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="자동 로그인"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/btn_id_search"
-                        style="@style/common_text_14_gray"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="아이디 찾기"
-                        app:layout_constraintBottom_toBottomOf="@id/cb_auto_signin"
-                        app:layout_constraintEnd_toStartOf="@+id/divider1"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintTop_toTopOf="@id/cb_auto_signin" />
-
-                    <View
-                        android:id="@+id/divider1"
-                        android:layout_width="1dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@color/light_gray"
-                        app:layout_constraintBottom_toBottomOf="@+id/btn_id_search"
-                        app:layout_constraintEnd_toStartOf="@+id/btn_password_search"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintTop_toTopOf="@id/btn_id_search" />
-
-                    <TextView
-                        android:id="@+id/btn_password_search"
-                        style="@style/common_text_14_gray"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="비밀번호 찾기"
-                        app:layout_constraintBottom_toBottomOf="@id/cb_auto_signin"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintTop_toTopOf="@id/cb_auto_signin" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <com.skydoves.elasticviews.ElasticButton
                     android:id="@+id/btn_signin"
                     style="@style/common_text_16_bold_white"
