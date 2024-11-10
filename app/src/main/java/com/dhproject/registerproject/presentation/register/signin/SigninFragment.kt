@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.dhproject.registerproject.MyApp
 import com.dhproject.registerproject.R
 import com.dhproject.registerproject.data.RegisterViewModel
+import com.dhproject.registerproject.data.RegisterViewModelFactory
 import com.dhproject.registerproject.databinding.FragmentSigninBinding
 import com.dhproject.registerproject.presentation.register.signup.SignupFragment
 import io.github.muddz.styleabletoast.StyleableToast
@@ -16,7 +18,9 @@ import io.github.muddz.styleabletoast.StyleableToast
 class SigninFragment : Fragment() {
 
     private lateinit var binding: FragmentSigninBinding
-    private val viewModel: RegisterViewModel by activityViewModels()
+    private val viewModel: RegisterViewModel by activityViewModels {
+        RegisterViewModelFactory((requireActivity().application as MyApp).userRepository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +32,20 @@ class SigninFragment : Fragment() {
             val userId = binding.etSigninId.text.toString()
             val password = binding.etSigninPassword.text.toString()
             viewModel.loginUser(userId, password) { isSuccess, user ->
-                if (isSuccess && user != null) {
-                    // 로그인 성공
-                } else {
-                    StyleableToast.makeText(
-                        requireActivity(),
-                        "아이디 또는 비밀번호를 확인해주세요.",
-                        R.style.toast_warning
-                    ).show()
+                requireActivity().runOnUiThread {
+                    if (isSuccess && user != null) {
+                        StyleableToast.makeText(
+                            requireActivity(),
+                            "로그인 성공",
+                            R.style.toast_warning
+                        ).show()
+                    } else {
+                        StyleableToast.makeText(
+                            requireActivity(),
+                            "아이디 또는 비밀번호를 확인해주세요.",
+                            R.style.toast_warning
+                        ).show()
+                    }
                 }
             }
         }

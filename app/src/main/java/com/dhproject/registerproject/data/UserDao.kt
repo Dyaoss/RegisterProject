@@ -13,4 +13,7 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE userId = :userId AND password = :password")
     suspend fun loginUser(userId: String, password: String): User
 
+    @Query("SELECT * FROM users WHERE userId = :userId")
+    suspend fun getUserById(userId: String): User?
+
 }
