@@ -1,6 +1,7 @@
 package com.dhproject.registerproject.data
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
@@ -26,5 +27,16 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
             val user = userRepository.loginUser(userId, password)
             onResult(user != null, user)
         }
+    }
+}
+
+class RegisterViewModelFactory(
+    private val userRepository: UserRepository
+) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
+            return RegisterViewModel(userRepository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
